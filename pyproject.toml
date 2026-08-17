@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
-dependencies = []
+dependencies = [
+    "simoptlib",
+]
 
 [project.scripts]
 simopt-competition-26 = "simopt_competition_26:main"
@@ -12,3 +14,6 @@ simopt-competition-26 = "simopt_competition_26:main"
 [build-system]
 requires = ["uv_build>=0.12.4,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.uv.sources]
+simoptlib = { git = "https://github.com/simopt-admin/simopt.git", rev = "be4d142cca5f0c005185a8149055c672d92ad86b" }
