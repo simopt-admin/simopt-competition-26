@@ -3,6 +3,7 @@ from simopt.experiment.api import SimulationConfig, run_experiment
 from simopt.experiment.single import ProblemSolver
 from simopt.solvers.randomsearch import RandomSearch
 
+from .demo import DemoSolver
 from .teleops import TeleopsProblem
 
 
@@ -12,7 +13,10 @@ def main() -> None:
     n_preps = 20
     n_preps_x0_xstar = 20
 
-    experiments = [ProblemSolver(solver=RandomSearch(), problem=problem, create_pickle=False)]
+    experiments = [
+        ProblemSolver(solver=solver, problem=problem, create_pickle=False)
+        for solver in (RandomSearch(), DemoSolver())
+    ]
     simulation_config = SimulationConfig(
         n_mreps=n_mreps, n_preps=n_preps, n_preps_x0_xstar=n_preps_x0_xstar
     )

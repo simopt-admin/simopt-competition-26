@@ -32,6 +32,6 @@ The commands below are for macOS or Linux. Start with a local checkout of this r
    uv run simopt-competition-26
    ```
 
-   This runs RandomSearch on the tele-operator scheduling problem, performs the post-replications, and saves the mean, unnormalized progress curve to `plot.png` in the current directory at 300 dpi. Plotting happens automatically at the end of the run. Running the command again replaces `plot.png`.
+   This runs `RandomSearch` and `DemoSolver` from [demo.py](src/simopt_competition_26/demo.py) on the tele-operator scheduling problem, performs the post-replications, and plots both mean, unnormalized progress curves together in `plot.png` in the current directory at 300 dpi. `DemoSolver` searches feasible neighbors by adding or removing one driver at one shift start, using 10 simulation replications per candidate and accepting the first improvement in randomized order. It stops when the budget runs out or a full neighborhood gives no improvement. Both solvers use the same experiment settings and replication budget. Plotting happens automatically at the end of the run. Running the command again replaces `plot.png`.
 
    The experiment settings are in [the entry point](src/simopt_competition_26/__init__.py): 10 macroreplications, 20 post-replications, and 20 post-replications for the initial and reference solutions. The default optimization budget is 1000 simulation replications, each covering nine simulated days, so the full experiment can take time. A plot file has been saved at `plot.png`.
